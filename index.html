@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thực hành CSS Grid Gap</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #172033;
+            background: #f3f6fb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 48px 20px;
+        }
+
+        main {
+            width: min(100%, 900px);
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 12px;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+        }
+
+        header p {
+            margin: 0;
+            color: #526078;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        section {
+            margin: 24px 0;
+            padding: 28px;
+            border: 1px solid #e1e7f0;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 8px 24px rgb(23 32 51 / 6%);
+        }
+
+        h2 {
+            margin: 0 0 8px;
+            font-size: 1.35rem;
+        }
+
+        .description {
+            margin: 0 0 20px;
+            color: #526078;
+            line-height: 1.6;
+        }
+
+        .grid-container {
+            display: grid;
+        }
+
+        .grid-equal {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-gap: 20px;
+        }
+
+        .grid-different {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-gap: 30px 10px;
+        }
+
+        .grid-container div {
+            display: grid;
+            min-height: 88px;
+            place-items: center;
+            border-radius: 10px;
+            padding: 20px;
+            color: #17324a;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .grid-equal div {
+            background: #b9e3f7;
+        }
+
+        .grid-different div {
+            background: #c7efd1;
+        }
+
+        code {
+            border-radius: 5px;
+            padding: 2px 6px;
+            background: #eef2f8;
+            color: #334b70;
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        .explanation {
+            margin: 18px 0 0;
+            color: #526078;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 560px) {
+            body {
+                padding: 28px 14px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .grid-container div {
+                min-height: 72px;
+                padding: 14px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Thực hành CSS <code>grid-gap</code></h1>
+            <p>
+                Quan sát khoảng cách giữa các ô khi áp dụng cùng một giá trị
+                hoặc giá trị khác nhau cho hàng và cột.
+            </p>
+        </header>
+
+        <section aria-labelledby="example-one-title">
+            <h2 id="example-one-title">Ví dụ 1: Khoảng cách hàng và cột bằng nhau</h2>
+            <p class="description">
+                Lưới 2 cột với <code>grid-gap: 20px</code> — khoảng cách giữa cả
+                hàng và cột đều là 20px.
+            </p>
+            <div class="grid-container grid-equal">
+                <div>Ô 1</div>
+                <div>Ô 2</div>
+                <div>Ô 3</div>
+                <div>Ô 4</div>
+            </div>
+            <p class="explanation">
+                Tương đương với <code>grid-row-gap: 20px</code> và
+                <code>grid-column-gap: 20px</code>.
+            </p>
+        </section>
+
+        <section aria-labelledby="example-two-title">
+            <h2 id="example-two-title">Ví dụ 2: Khoảng cách hàng và cột khác nhau</h2>
+            <p class="description">
+                Lưới 3 cột với <code>grid-gap: 30px 10px</code> — hàng cách nhau
+                30px, cột cách nhau 10px.
+            </p>
+            <div class="grid-container grid-different">
+                <div>Ô 1</div>
+                <div>Ô 2</div>
+                <div>Ô 3</div>
+                <div>Ô 4</div>
+                <div>Ô 5</div>
+                <div>Ô 6</div>
+            </div>
+            <p class="explanation">
+                Giá trị thứ nhất là <code>grid-row-gap: 30px</code>;
+                giá trị thứ hai là <code>grid-column-gap: 10px</code>.
+            </p>
+        </section>
+    </main>
+</body>
+</html>
